@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>setInterval/clearInterval example Version2 (MDN)</title>
+    <style>
+        #main{
+        position:absolute;
+        top:0%;
+        left:40%;
+        }
+
+        body{
+        background:#000;
+        }
+
+        button{
+        border-style:none;
+        color:white;
+        background:#0AF;
+        font-size:16px;
+        } 
+    </style>
+</head>
+<body onload="Start()">
+
+    <div id="main">
+        <strong style="color:white">Version 2</strong>
+    
+        <div id="box1">
+            <p>Hello World</p>
+        </div>
+        <div id="box2">
+            <p>Hello Sun</p>
+        </div>
+        <div id="box3">
+            <p>Hello Moon</p>
+        </div>
+        <div id="box4">
+            <p>Hello Planet 10</p>
+        </div>
+    
+        <p id="demo"></p>
+        <button onclick="Start();">Start</button>
+        <button onclick="Stop();">Stop</button>
+    </div>
+    
+    <script>
+        var control;
+        var timer = 1000; // timer pre defined can't pass by reference
+
+        function Stop() {
+            clearInterval(control);
+        }
+
+        function Start() {
+            clearInterval(control);
+            control = setInterval(Caller, timer);
+        }
+
+        function FlashText(obj, color1, color2, timer) {
+            obj.style.color = obj.style.color == color1 ? color2 : color1;
+        }
+
+        function Caller() {
+            var box1 = document.getElementById("box1");
+            var flashText1 = new FlashText(box1, 'lightblue', 'brown', 399);
+            var box2 = document.getElementById("box2");
+            var flashText2 = new FlashText(box2, 'yellow', 'orange', 1000);
+            var box3 = document.getElementById("box3");
+            var flashText3 = new FlashText(box3, 'darkorange', 'grey', 3000);
+            var box4 = document.getElementById("box4");
+            var flashText4 = new FlashText(box4, 'darkgrey', 'red', 1000);
+        }   
+    </script>
+</body>
+</html>
